@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Home from "./Screens/Home";
+import Login from "./Screens/Login";
 
 function App() {
+  const [auth, setAuth] = useState(localStorage.getItem("user"));
+
+  const changeAuth = (tag) => {
+    setAuth(tag ? localStorage.getItem("user") : null);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {!auth ? (
+        <Login changeAuth={changeAuth} />
+      ) : (
+        <Home changeAuth={changeAuth} />
+      )}
     </div>
   );
 }

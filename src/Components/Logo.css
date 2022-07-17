@@ -1,0 +1,15 @@
+.logo-title {
+  display: flex;
+  align-items: center;
+}
+
+.logo-title img {
+  margin-right: 10px;
+}
+
+.title {
+  text-transform: uppercase;
+  color: var(--primary-color);
+  font-size: 22px;
+  font-weight: 900;
+}

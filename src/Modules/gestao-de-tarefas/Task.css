@@ -1,0 +1,12 @@
+.task {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task .date {
+    margin-left: 10px;
+    color: #888;
+}
