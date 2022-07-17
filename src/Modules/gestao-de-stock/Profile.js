@@ -41,12 +41,12 @@ const Profile = () => {
   return (
     <div>
       <Container
-        className="mt-2"
-        style={{
-          border: "1px solid #ddd",
-          background: "#fcfcfc",
-          borderRadius: 5,
-        }}
+        className="mt-2 p-2"
+        // style={{
+        //   border: "1px solid #ddd",
+        //   background: "#fcfcfc",
+        //   borderRadius: 5,
+        // }}
       >
         <Row>
           <Col>
@@ -71,8 +71,7 @@ const Profile = () => {
               <Input
                 type="button"
                 value="Salvar"
-                color="primary"
-                style={{ background: "blue", color: "#fff" }}
+                style={{ background: "indigo", color: "#fff" }}
                 onClick={editProfile}
               />
             </FormGroup>

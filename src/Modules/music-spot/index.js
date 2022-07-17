@@ -5,10 +5,7 @@ const MusicSpot = () => {
   return (
     <div>
       <Tabs
-        links={[
-          { label: "Minhas Músicas" },
-          { label: "Estatísticas de venda" },
-        ]}
+        links={[{ label: "Minhas Músicas" }, { label: "Perfil" }]}
         components={[<Musics />, <></>]}
       />
     </div>

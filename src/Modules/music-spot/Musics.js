@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MdDelete } from "react-icons/md";
 import IconButton from "@mui/material/IconButton";
 import {
@@ -16,6 +16,19 @@ const Musics = () => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
+  const [musics, setMusics] = useState("");
+
+  const getMusics = async () => {
+    const res = await fetch(
+      `${
+        process.env.REACT_APP_API_URL
+      }/music_spot/musics/user/${localStorage.getItem("user")}`
+    );
+
+    const json = await res.json();
+
+    setMusics(json);
+  };
 
   const handleFile = async (e) => {
     let files = e.target.files;
@@ -61,6 +74,10 @@ const Musics = () => {
     }
   };
 
+  useEffect(() => {
+    getMusics();
+  }, []);
+
   return (
     <div>
       <Container
@@ -102,13 +119,11 @@ const Musics = () => {
           </Col>
           <Col>
             <FormGroup>
-              <Label>Preço (Mt)</Label>
-              <Input
-                min={0}
-                type="number"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
-              />
+              <Label>Público</Label>
+              <Input type="select" onChange={(e) => setPrice(e.target.value)}>
+                <option value={0}>Free</option>
+                <option value={1}>Premium</option>
+              </Input>
             </FormGroup>
           </Col>
           <Col>
@@ -131,22 +146,29 @@ const Musics = () => {
           <thead>
             <tr>
               <th>Titulo</th>
-              <th>Preço (Mt)</th>
-              <th>Vendas (Mt)</th>
+              <th>Público</th>
               <th>Acções</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Buluku staff</td>
-              <td>18.00</td>
-              <td>22,000.00</td>
-              <td>
-                <IconButton style={{ background: "indigo", marginRight: 10 }}>
-                  <MdDelete size={12} color="white" />
-                </IconButton>
-              </td>
-            </tr>
+            {musics.length > 0 &&
+              musics.map(({ _id, title, price, url }) => (
+                <tr key={_id}>
+                  <td>
+                    <a target="_blank" href={url}>
+                      {title}
+                    </a>
+                  </td>
+                  <td>{price.toString() === "0" ? "Free" : "Premium"}</td>
+                  <td>
+                    <IconButton
+                      style={{ background: "indigo", marginRight: 10 }}
+                    >
+                      <MdDelete size={12} color="white" />
+                    </IconButton>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </Table>
       </div>

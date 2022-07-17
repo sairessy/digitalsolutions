@@ -3,14 +3,7 @@ import Logo from "../../Components/Logo";
 import "./Header.css";
 import { MdLightMode } from "react-icons/md";
 import { IoPersonCircleOutline } from "react-icons/io5";
-import {
-  Popover,
-  PopoverHeader,
-  PopoverBody,
-  Button,
-  Input,
-  Row,
-} from "reactstrap";
+import { Popover, PopoverHeader, PopoverBody, Button } from "reactstrap";
 
 export const Header = ({ changeAuth }) => {
   const [popoverOpen, setPopoverOpen] = useState(false);

@@ -2,7 +2,7 @@
   "name": "digital-solutions",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sairessy.github.io/build",
+  "homepage": "https://sairessy.github.io",
   "dependencies": {
     "-": "0.0.1",
     "@emotion/react": "^11.9.3",
